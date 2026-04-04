@@ -12,16 +12,23 @@ return {
     table.insert(opts.right, {
       title = "Avante",
       ft = "Avante",
-      size = { height = 0.6 },
+      size = { height = 0.5 },
       pinned = true,
       open = "AvanteToggle",
+    })
+
+    table.insert(opts.right, {
+      title = "Selected Files",
+      ft = "AvanteSelectedFiles",
+      size = { height = 14 },
+      pinned = true,
     })
 
     -- Avante Input box (right under the chat output)
     table.insert(opts.right, {
       title = "Input",
       ft = "AvanteInput",
-      size = { height = 0.1 },
+      size = { height = 4 },
       pinned = true,
     })
 
@@ -36,7 +43,6 @@ return {
     -- Global sizes
     opts.options = vim.tbl_deep_extend("force", opts.options or {}, {
       right = { size = 40 }, -- width of right sidebar
-      bottom = { size = 20 }, -- base height for bottom panel
     })
 
     return opts

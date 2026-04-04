@@ -1,7 +1,23 @@
 return {
   {
     "yetone/avante.nvim",
+    event = "VeryLazy",
     opts = {
+      windows = {
+        position = "right",
+        input = {
+          height = 3,
+          prefix = "> ",
+        },
+        selected_files = {
+          height = 10,
+        },
+        ask = {
+          floating = true,
+          start_insert = true,
+          border = "rounded",
+        }
+      },
       provider = "xai",  -- set as default
       providers = {
         xai = {
