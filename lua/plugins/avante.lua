@@ -3,6 +3,10 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     opts = {
+      behaviour = {
+        auto_suggestions = false,
+      },
+      auto_suggestions_provider = nil,
       windows = {
         position = "right",
         input = {
