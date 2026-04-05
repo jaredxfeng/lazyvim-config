@@ -38,5 +38,4 @@ return {
     },
     -- your existing build/dependencies stay the same
   },
-  { "saghen/blink-cmp-avante", enabled = false },
 }
