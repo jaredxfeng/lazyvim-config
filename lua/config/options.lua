@@ -9,6 +9,7 @@ vim.opt.exrc = false -- Allow .nvim.lua files in project roots
 vim.opt.secure = true
 
 vim.g.autoformat = false
+vim.g.lazyvim_ui_backdrop = 100  -- fully transparent backdrop
 
 if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
