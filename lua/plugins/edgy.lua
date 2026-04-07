@@ -2,6 +2,18 @@
 return {
   "folke/edgy.nvim",
   opts = function(_, opts)
+    -- Change default size for the Snacks terminal (<C-/>)
+    local new_size = { height = 0.2 } -- ← CHANGE THIS: 0.3 = 30%, 15 = fixed 15 lines, etc.
+
+    for _, pos in ipairs({ "bottom", "top", "left", "right" }) do
+      opts[pos] = opts[pos] or {}
+      for _, panel in ipairs(opts[pos]) do
+        if panel.ft == "snacks_terminal" then
+          panel.size = new_size
+          break
+        end
+      end
+    end
     -- Start fresh for the panels we care about to avoid duplicates
     opts.left = opts.left or {}
     opts.right = {}
