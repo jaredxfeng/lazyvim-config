@@ -9,25 +9,27 @@ vim.opt.exrc = false -- Allow .nvim.lua files in project roots
 vim.opt.secure = true
 
 vim.g.autoformat = false
-vim.g.lazyvim_ui_backdrop = 100  -- fully transparent backdrop
 
 if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
-    name = "WslClipboard",
+    name = "win32yank",
     copy = {
-      ["+"] = "clip.exe",
-      ["*"] = "clip.exe",
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
     },
     paste = {
-      ["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
     },
     cache_enabled = 0,
   }
+
+  -- Yank to Windows system clipboard (on demand — normal y/yy stays internal + instant)
+  vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+  vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
 end
 
--- Optional: Make yanking automatically go to system clipboard (like most IDEs)
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = ""
 
 -- Github Authentication
 -- Try to get GH_TOKEN from gh CLI if not already set
