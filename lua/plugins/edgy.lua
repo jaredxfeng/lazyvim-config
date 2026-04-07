@@ -2,18 +2,26 @@
 return {
   "folke/edgy.nvim",
   opts = function(_, opts)
+    opts.animate = { enabled = false }
+
     -- Change default size for the Snacks terminal (<C-/>)
     local new_size = { height = 0.2 } -- ← CHANGE THIS: 0.3 = 30%, 15 = fixed 15 lines, etc.
 
-    for _, pos in ipairs({ "bottom", "top", "left", "right" }) do
-      opts[pos] = opts[pos] or {}
-      for _, panel in ipairs(opts[pos]) do
-        if panel.ft == "snacks_terminal" then
+    for _, panel in ipairs(opts.bottom or {}) do
+      if type(panel) == "table" then
+        if panel.ft == "snacks_terminal"
+            or panel.ft == "noice"
+            or panel.ft == "trouble"
+            or panel.title == "Trouble" then
           panel.size = new_size
-          break
         end
       end
     end
+
+-- 2. Also anchor the entire bottom edgebar (this is what stops the container from expanding)
+    opts.options = opts.options or {}
+    opts.options.bottom = { size = new_size.height } -- use the same fraction/number you chose above
+
     -- Start fresh for the panels we care about to avoid duplicates
     opts.left = opts.left or {}
     opts.right = {}
