@@ -9,6 +9,9 @@ vim.opt.exrc = false -- Allow .nvim.lua files in project roots
 vim.opt.secure = true
 
 vim.g.autoformat = false
+vim.g.snacks_animate = false
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
