@@ -6,3 +6,7 @@ require("tsc").setup({
   },
 })
 
+-- The Brain SOC config
+require("brain-soc").update_config({
+  capacity_minutes = 300,
+})
