@@ -1,14 +1,17 @@
 -- ~/.config/nvim/lua/plugins/brain-soc.lua
 return {
-  "jaredxfeng/brain-soc.nvim",   -- ← CHANGE THIS if your repo is somewhere else
+  "jaredxfeng/brain-soc.nvim",
+  dependencies = {
+    { "nvim-lualine/lualine.nvim", optional = true },
+  },
   opts = {
-    capacity_minutes = 5000,
+    capacity_minutes = 400,
     drain_rate = 1.1,
     coding_threshold_minutes = 3,
     recharge_minutes_per_break = 25,
   },
-  lazy = false,                         -- load immediately on startup
+  lazy = false,
   config = function(_, opts)
-    require("brain-soc")._opts = opts   -- pass opts to the module
+    require("brain-soc")._opts = opts -- pass opts to the module
   end,
 }
