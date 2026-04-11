@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/plugins/brain-soc.lua
 return {
-  "jaredxfeng/brain-soc.nvim",
+  "jaredxfeng/brain-battery.nvim",
   dependencies = {
     { "nvim-lualine/lualine.nvim", optional = true },
   },
@@ -12,6 +12,6 @@ return {
   },
   lazy = false,
   config = function(_, opts)
-    require("brain-soc")._opts = opts -- pass opts to the module
+    require("brain-battery")._opts = opts -- pass opts to the module
   end,
 }
